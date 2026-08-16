@@ -1,0 +1,265 @@
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#F5F7FB;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:10px;
+}
+
+.container{
+    width:420px;
+    background:#fff;
+    padding:18px 25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+h2{
+    text-align:center;
+    color:#2563EB;
+    margin-bottom:5px;
+    font-size:24px;
+}
+
+p{
+    text-align:center;
+    color:gray;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+label{
+    display:block;
+    margin-top:7px;
+    font-weight:bold;
+    font-size:14px;
+}
+
+input,
+select{
+    width:100%;
+    padding:8px;
+    margin-top:3px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:14px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#2563EB;
+}
+
+button{
+    width:100%;
+    margin-top:12px;
+    padding:9px;
+    background:#2563EB;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1D4ED8;
+}
+
+.error{
+    color:red;
+    font-size:11px;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.login-link a{
+    text-decoration:none;
+    color:#2563EB;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create Account</h2>
+
+<p>Register to apply for jobs</p>
+
+<form onsubmit="return validateForm()">
+
+<label>Full Name</label>
+<input type="text" id="name">
+<div class="error" id="nameError"></div>
+
+<label>Email</label>
+<input type="email" id="email">
+<div class="error" id="emailError"></div>
+
+<label>Phone Number</label>
+<input type="text" id="phone">
+<div class="error" id="phoneError"></div>
+
+<label>Password</label>
+<input type="password" id="password">
+<div class="error" id="passwordError"></div>
+
+<label>Confirm Password</label>
+<input type="password" id="confirm">
+<div class="error" id="confirmError"></div>
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+<div class="error" id="dobError"></div>
+
+<label>Skills</label>
+
+<select id="skills">
+<option value="">Select Skill</option>
+<option>HTML</option>
+<option>CSS</option>
+<option>JavaScript</option>
+<option>Python</option>
+<option>Java</option>
+<option>C++</option>
+<option>React.js</option>
+<option>Node.js</option>
+<option>SQL</option>
+<option>Full Stack Development</option>
+</select>
+
+<div class="error" id="skillsError"></div>
+
+<label>Years of Experience</label>
+<input type="number" id="experience" min="0" max="30">
+<div class="error" id="experienceError"></div>
+
+<label>Upload Resume (PDF/DOC)</label>
+<input type="file" id="resume" accept=".pdf,.doc,.docx">
+<div class="error" id="resumeError"></div>
+
+<label>LinkedIn Profile</label>
+<input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname">
+<div class="error" id="linkedinError"></div>
+
+<button type="submit">Register</button>
+
+<div class="login-link">
+Already have an account?
+<a href="login.html">Login</a>
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+function validateForm(){
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let password=document.getElementById("password").value;
+let confirm=document.getElementById("confirm").value;
+let dob=document.getElementById("dob").value;
+let skills=document.getElementById("skills").value;
+let experience=document.getElementById("experience").value;
+let resume=document.getElementById("resume").value;
+let linkedin=document.getElementById("linkedin").value.trim();
+
+document.getElementById("nameError").innerHTML="";
+document.getElementById("emailError").innerHTML="";
+document.getElementById("phoneError").innerHTML="";
+document.getElementById("passwordError").innerHTML="";
+document.getElementById("confirmError").innerHTML="";
+document.getElementById("dobError").innerHTML="";
+document.getElementById("skillsError").innerHTML="";
+document.getElementById("experienceError").innerHTML="";
+document.getElementById("resumeError").innerHTML="";
+document.getElementById("linkedinError").innerHTML="";
+
+let emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let phonePattern=/^[0-9]{10}$/;
+let linkedinPattern=/^https:\/\/(www\.)?linkedin\.com\/.*$/;
+
+if(name==""){
+document.getElementById("nameError").innerHTML="Enter your name";
+return false;
+}
+
+if(!email.match(emailPattern)){
+document.getElementById("emailError").innerHTML="Enter valid email";
+return false;
+}
+
+if(!phone.match(phonePattern)){
+document.getElementById("phoneError").innerHTML="Phone number should be 10 digits";
+return false;
+}
+
+if(password.length<6){
+document.getElementById("passwordError").innerHTML="Password must be at least 6 characters";
+return false;
+}
+
+if(password!=confirm){
+document.getElementById("confirmError").innerHTML="Passwords do not match";
+return false;
+}
+
+if(dob==""){
+document.getElementById("dobError").innerHTML="Select date of birth";
+return false;
+}
+
+if(skills==""){
+document.getElementById("skillsError").innerHTML="Select your skill";
+return false;
+}
+
+if(experience==""){
+document.getElementById("experienceError").innerHTML="Enter experience";
+return false;
+}
+
+if(resume==""){
+document.getElementById("resumeError").innerHTML="Upload your resume";
+return false;
+}
+
+if(linkedin!="" && !linkedin.match(linkedinPattern)){
+document.getElementById("linkedinError").innerHTML="Enter a valid LinkedIn URL";
+return false;
+}
+
+alert("Registration Successful!");
+
+return true;
+
+}
+
+</script>
+
+</body>
+</html>
