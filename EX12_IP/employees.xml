@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<company>
+    <employee>
+        <id>101</id>
+        <name>Rajesh Kumar</name>
+        <department>IT</department>
+        <designation>Software Engineer</designation>
+        <salary>65000</salary>
+    </employee>
+    <employee>
+        <id>102</id>
+        <name>Priya Sharma</name>
+        <department>HR</department>
+        <designation>HR Manager</designation>
+        <salary>55000</salary>
+    </employee>
+    <employee>
+        <id>103</id>
+        <name>Karthik Raja</name>
+        <department>Finance</department>
+        <designation>Accountant</designation>
+        <salary>48000</salary>
+    </employee>
+    <employee>
+        <id>104</id>
+        <name>Anitha Suresh</name>
+        <department>Marketing</department>
+        <designation>Marketing Executive</designation>
+        <salary>45000</salary>
+    </employee>
+    <employee>
+        <id>105</id>
+        <name>Vijay Sethupathi</name>
+        <department>IT</department>
+        <designation>Senior Developer</designation>
+        <salary>80000</salary>
+    </employee>
+    <employee>
+        <id>106</id>
+        <name>Divya Ramesh</name>
+        <department>Operations</department>
+        <designation>Operations Lead</designation>
+        <salary>60000</salary>
+    </employee>
+    <employee>
+        <id>107</id>
+        <name>Arun Kumar</name>
+        <department>Sales</department>
+        <designation>Sales Representative</designation>
+        <salary>40000</salary>
+    </employee>
+    <employee>
+        <id>108</id>
+        <name>Meena Kumari</name>
+        <department>Finance</department>
+        <designation>Financial Analyst</designation>
+        <salary>52000</salary>
+    </employee>
+    <employee>
+        <id>109</id>
+        <name>Suresh Babu</name>
+        <department>IT</department>
+        <designation>System Administrator</designation>
+        <salary>58000</salary>
+    </employee>
+    <employee>
+        <id>110</id>
+        <name>Kavitha Mani</name>
+        <department>HR</department>
+        <designation>Recruiter</designation>
+        <salary>42000</salary>
+    </employee>
+</company>
