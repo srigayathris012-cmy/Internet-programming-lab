@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #3498db,
+        #8e44ad
+    );
+}
+
+
+/* =========================
+   LOGIN & REGISTRATION
+========================= */
+
+.box {
+    width: 400px;
+    max-width: 95%;
+
+    margin: 70px auto;
+
+    padding: 35px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px
+        rgba(0, 0, 0, 0.2);
+}
+
+.box h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.box h2 {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+
+/* Input */
+
+.box input {
+    width: 100%;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+}
+
+.box input:focus {
+    outline: none;
+
+    border-color: #3498db;
+
+    box-shadow: 0 0 5px
+        rgba(52, 152, 219, 0.3);
+}
+
+
+/* Buttons */
+
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: #3498db;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #217dbb;
+}
+
+
+/* Links */
+
+.box a {
+    color: #3498db;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.box a:hover {
+    text-decoration: underline;
+}
+
+
+/* Messages */
+
+#message,
+#registerMessage {
+    font-weight: bold;
+}
+
+
+/* =========================
+   EXAM
+========================= */
+
+.exam {
+    max-width: 850px;
+
+    margin: 20px auto;
+
+    padding: 35px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px
+        rgba(0, 0, 0, 0.2);
+}
+
+.exam h1 {
+    text-align: center;
+
+    color: #2c3e50;
+}
+
+.exam > p {
+    text-align: center;
+
+    color: #666;
+
+    margin-bottom: 30px;
+}
+
+
+/* Question */
+
+.question {
+    margin-bottom: 20px;
+
+    padding: 20px;
+
+    background-color: #f7f9fb;
+
+    border-left: 5px solid #3498db;
+
+    border-radius: 8px;
+}
+
+.question h3 {
+    margin-top: 0;
+
+    color: #2c3e50;
+}
+
+.question label {
+    display: block;
+
+    padding: 8px;
+
+    margin: 3px 0;
+
+    cursor: pointer;
+
+    color: #444;
+
+    border-radius: 5px;
+}
+
+.question label:hover {
+    background-color: #e8f4fc;
+}
+
+.question input[type="radio"] {
+    margin-right: 8px;
+
+    accent-color: #3498db;
+}
+
+
+/* Exam Button */
+
+.exam button {
+    display: block;
+
+    width: 220px;
+
+    margin: 30px auto 0;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result-box {
+    width: 450px;
+
+    max-width: 95%;
+
+    margin: 100px auto;
+
+    padding: 40px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px
+        rgba(0, 0, 0, 0.2);
+}
+
+.result-box h1 {
+    color: #2c3e50;
+}
+
+.result-box h2 {
+    color: #555;
+}
+
+
+/* Marks */
+
+.mark {
+    width: 180px;
+
+    height: 180px;
+
+    margin: 30px auto;
+
+    border-radius: 50%;
+
+    background-color: #3498db;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 42px;
+
+    font-weight: bold;
+}
+
+.percentage {
+    font-size: 22px;
+
+    color: #555;
+}
+
+#resultMessage {
+    margin: 25px 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .box {
+        margin: 30px auto;
+        padding: 25px;
+    }
+
+    .exam {
+        padding: 20px;
+    }
+
+    .exam h1 {
+        font-size: 24px;
+    }
+
+    .exam button {
+        width: 100%;
+    }
+
+    .result-box {
+        margin: 50px auto;
+        padding: 25px;
+    }
+}
