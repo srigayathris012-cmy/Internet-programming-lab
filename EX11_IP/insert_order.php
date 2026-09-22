@@ -1,7 +1,21 @@
+<?php
+include "db_connect.php";
+
+$customer_name = $_POST['customer_name'];
+$product_name  = $_POST['product_name'];
+$quantity      = $_POST['quantity'];
+$price         = $_POST['price'];
+
+$sql = "INSERT INTO orders (customer_name, product_name, quantity, price) VALUES (?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssid", $customer_name, $product_name, $quantity, $price);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Place Order</title>
+    <title>Order Status</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,30 +35,23 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             width: 100%;
             max-width: 500px;
+            text-align: center;
         }
         h2 {
-            margin-top: 0;
             color: #2c3e50;
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 10px;
         }
-        label {
+        .message-box {
+            padding: 15px;
+            background-color: #e8f8f5;
+            border-left: 5px solid #2ecc71;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #27ae60;
             font-weight: 600;
-            font-size: 14px;
-            color: #555;
         }
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        input[type="submit"], .btn {
+        .btn {
             background-color: #3498db;
             color: white;
             padding: 10px 20px;
@@ -55,29 +62,25 @@
             text-decoration: none;
             display: inline-block;
         }
-        input[type="submit"]:hover, .btn:hover {
+        .btn:hover {
             background-color: #2980b9;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Place Order</h2>
-        <form action="insert_order.php" method="POST">
-            <label>Customer Name:</label>
-            <input type="text" name="customer_name" required>
+        <h2>Order Status</h2>
+        <?php
+        if ($stmt->execute()) {
+            echo "<div class='message-box'>Order placed successfully!</div>";
+            echo "<a href='view_orders.php' class='btn'>View All Orders</a>";
+        } else {
+            echo "<p style='color: red;'>Error: " . $stmt->error . "</p>";
+        }
 
-            <label>Product Name:</label>
-            <input type="text" name="product_name" required>
-
-            <label>Quantity:</label>
-            <input type="number" name="quantity" min="1" required>
-
-            <label>Price:</label>
-            <input type="number" name="price" step="0.01" min="0" required>
-
-            <input type="submit" value="Place Order">
-        </form>
+        $stmt->close();
+        $conn->close();
+        ?>
     </div>
 </body>
 </html>
