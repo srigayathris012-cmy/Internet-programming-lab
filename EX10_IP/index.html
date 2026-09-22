@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Candidate Application</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Job Application Portal</h2>
+        <form method="POST" action="apply.php">
+            
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" name="fullname" placeholder="e.g. John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address:</label>
+                <input type="text" name="email" placeholder="e.g. john@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number (10 digits):</label>
+                <input type="text" name="phone" placeholder="e.g. 9876543210" required>
+            </div>
+
+            <div class="form-group">
+                <label>Years of Experience:</label>
+                <input type="number" name="experience" min="0" max="40" placeholder="e.g. 3" required>
+            </div>
+
+            <div class="form-group">
+                <label>Credit Card Number (16 digits):</label>
+                <input type="text" name="ccnumber" placeholder="e.g. 1234567812345678" required>
+            </div>
+
+            <div class="form-group">
+                <label>Applying for Position:</label>
+                <select name="job_role" required>
+                    <option value="">--Select Role--</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="PHP Programmer">PHP Programmer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                </select>
+            </div>
+
+            <input type="submit" name="submit" value="Submit Application">
+
+        </form>
+    </div>
+
+</body>
+</html>
