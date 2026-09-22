@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping - Order Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 900px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        function loadOrders() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xml = this.responseXML;
+                    var orders = xml.getElementsByTagName("order");
+                    var output = "<h2>Order Details</h2>";
+                    output += "<table>";
+                    output += "<tr><th>ID</th><th>Customer</th><th>Product</th><th>Quantity</th><th>Price</th></tr>";
 
+                    for (var i = 0; i < orders.length; i++) {
+                        var o = orders[i];
+                        function val(tag) { 
+                            return o.getElementsByTagName(tag)[0].childNodes[0].nodeValue; 
+                        }
+                        var id = val("id");
+                        var customer = val("customer");
+                        var product = val("product");
+                        var quantity = val("quantity");
+                        var price = val("price");
+
+                        output += "<tr><td>" + id + "</td><td>" + customer + "</td>" +
+                                  "<td>" + product + "</td><td>" + quantity + "</td>" +
+                                  "<td>$" + price + "</td></tr>";
+                    }
+
+                    output += "</table>";
+                    document.getElementById("orderData").innerHTML = output;
+                }
+            };
+            xhttp.open("GET", "orders.xml", true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Shopping - Order Viewer</h1>
+        <button onclick="loadOrders()">Load Orders</button>
+        <div id="orderData"></div>
+    </div>
+</body>
+</html>
